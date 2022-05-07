@@ -1,0 +1,20 @@
+openapi: "3.0.2"
+info:
+  version: 1.0.0
+  title: JSON Placeholder API
+  description: See https://jsonplaceholder.typicode.com/
+paths:
+  /:
+    get:
+      description: Returns "Hello world"
+      tags: ["Posts"]
+      operationId: "getHelloWorldMessage"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            "application/json":
+              schema:
+                type: string
+        "404":
+          description: Cannot access server
