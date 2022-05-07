@@ -7,7 +7,6 @@ paths:
   /:
     get:
       description: Returns "Hello world"
-      tags: ["Posts"]
       operationId: "getHelloWorldMessage"
       responses:
         "200":

@@ -1,3 +1,4 @@
+import bodyParser from "body-parser";
 import express, { Express } from "express";
 import { StatusCodes } from "http-status-codes";
 import { isNil } from "lodash";
@@ -12,7 +13,7 @@ async function init() {
   });
   await api.init();
   const app: Express = express();
-
+  app.use(bodyParser.json());
   app.use((request, response) => {
     const headers = Object.fromEntries(
       Object.entries(request.headers).filter(
@@ -36,7 +37,9 @@ async function init() {
       .catch(() => response.status(StatusCodes.INTERNAL_SERVER_ERROR).end());
   });
 
-  return app.listen(5000, () => "Server is listening on port 5000");
+  return app.listen(5000, () =>
+    console.log("Server is listening on port 5000")
+  );
 }
 
 module.exports = { init };
